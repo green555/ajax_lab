@@ -41,10 +41,13 @@ document.querySelector("#weather-form").addEventListener("submit", showWeather);
 
 function orderMelons(evt) {
   evt.preventDefault();
+  const melonValue = document.querySelector("#melon-type-field").value;
+  console.log(melonValue);
+  
 
   const formInputs = {
     qty: document.querySelector("#qty-field").value,
-    melon: document.querySelector('[name="melon_type"]').innerText,
+    melon_type: melonValue,
   };
   // NOTE: Follow up on extracting melon_type because it's currently showing None
 
@@ -58,8 +61,6 @@ function orderMelons(evt) {
     .then((response) => response.json())
     .then((data) => {
       document.querySelector("#order-status").innerHTML = data["msg"];
-      console.log(response);
-      console.log(data);
     });
 
   // NOTE: Follow up on response is not defined
